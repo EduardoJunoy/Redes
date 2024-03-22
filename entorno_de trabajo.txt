@@ -1,0 +1,98 @@
+Entorno de Trabajo:
+
+Para la realización de estas prácticas vamos a usar una máquina virtual basada en Ubuntu 18.04, ya que necesitaremos permisos de superusuario para muchas de las tareas. Es recomendable almacenar la ISO de la máquina virtual en un medio extraíble (memoria USB, disco duro externo, etc.) porque se usará en los controles y la descarga puede ser lenta. La ISO se usará exclusivamente en VMWare, puesto que VirtualBox no permite algunas operaciones necesarias para las prácticas. NO se proveerá soporte a VirtualBox en ningún caso. Tampoco se proporcionará soporte a equipos que no sean Windows o Linux.
+
+La ISO que se proporciona contiene las herramientas necesarias para desarrollar las prácticas. En caso de que falte alguna utilidad, puede instalarla usando el gestor de paquetes. OJO: La ISO NO es persistente, por tanto, lo que instale se borrará en el siguiente reinicio. 
+
+Las credenciales de la máquina virtual son las siguientes:
+
+Usuario: redes
+
+Password: alumnoeps
+
+
+Además de las utilidades estándar, la ISO lleva instalada una utilidad llamada Mininet que usaremos activamente en estas prácticas.
+
+
+Mininet:
+
+Mininet es una herramienta que nos permite virtualizar las capas de red sin virtualizar los recursos físicos de proceso o almacenamiento.
+Mininet permite añadir hosts, switches estándar y switches compatibles con el estándar OpenFlow. Esta herramienta es de utilidad especialmente en entornos SDN (Software Defined Networks) en los que la lógica
+de los elementos de red puede ser programada mediante software.
+
+    Antes de arrancar Mininet es recomendable desconectar la aplicación NetworkManager ejecutando uno de los 2 siguientes comandos:
+
+
+sudo service stop network-manager
+sudo systemctl stop network-manager
+
+Para arrancar Mininet, desde una terminal ejecutaremos:
+
+
+
+sudo mn --nat
+
+Este comando arrancará una topología de ejemplo simple en la que 2 hosts se conectan mediante un switch estándar y existe una gateway de salida a Internet. Esta configuración será suficiente para la realización de las prácticas. Mininet nombra por defecto a los hosts llamándolos h1,h2,..., hn. Del mismo modo, los switches se nombran como s1, s2, ..., sn.  Una característica muy útil de Mininet es que prácticamente cualquier comando o aplicación que funciona en Linux puede ser ejecutada en los hosts y switches que se instancian. Si todo ha ejecutado correctamente, tendremos una salida similar a la siguiente:
+
+
+*** Creating network
+
+*** Adding controller
+
+*** Adding hosts:
+
+h1 h2 
+
+*** Adding switches:
+
+s1 
+
+*** Adding links:
+
+(h1, s1) (h2, s1) 
+
+*** Configuring hosts
+
+h1 h2 
+
+*** Starting controller
+
+c0 
+
+*** Starting 1 switches
+
+s1 ...
+
+*** Starting CLI:
+
+mininet> 
+
+
+Cuando se ejecuta Mininet entramos en una shell interactiva que nos permite realizar acciones. Podemos salir de dicha shell en cualquier momento escribiendo el comando quit. Es importante cerrar correctamente el programa, ya que si no algunos recursos virtualizados pueden no liberarse correctamente. Si no hemos salido correctamente y queremos limpiar los recursos de Mininet podemos ejecutar en una terminal el comando:
+
+
+sudo mn -c
+
+Este comando limpiará todos los recursos y dejará la aplicación lista para volver a usarse. En caso de que al arrancar Mininet se observe algún error, es recomendable ejecutar este comando y después volver a arrancar Mininet.
+
+
+Dentro de la shell de Mininet podemos abrir terminales en equipos (hosts) específicos. Por ejemplo, si queremos abrir una terminal en el host h1 ejecutaremos en la shell de Mininet:
+
+
+gterm h1
+
+Si queremos lanzar una terminal no basada en GNOME debemos ejecutar:
+
+
+
+xterm h1
+
+
+Por defecto, Mininet asigna a los hosts direcciones consecutivas en la subred privada 10.0.0.0/8. Podemos cambiar las direcciones desde la shell de comandos en cada host o switch usando el comando ifconfig de Linux.
+
+
+Última modificación: viernes, 16 de septiembre de 2022, 09:14
+Actividad previa
+Ir a...
+Siguiente actividad
+

@@ -1,0 +1,44 @@
+AUTORES:
+	Carlos García Santa
+	Eduardo Junoy Ortega
+
+FICHEROS A ENTREGAR:
+	
+	leeme.txt
+	practica2.py
+	ethernet.py
+	arp.py
+
+ENTREGA:
+	- Normativa de entrega cumplida en su totalidad.
+		Realizado: Se han realizado varias relecturas del enunciado.
+		
+    - Fichero leeme.txt bien explicado.
+		Realizado: Es el presente archivo.
+		
+    - Recibir tramas Ethernet, realizar comprobaciones y llamar correctamente a la función de callback de nivel superior.
+		Realizado: Se ha probado con éxito que a nivel de enlace se reciben tramas mediante la función "process_frame"
+		
+    - Enviar tramas Ethernet correctamente.
+		Realizado: El programa envía satisfactoriamente tramas Ethernet haciendo uso de las funciones "sendEthernetFrame" y "pcap_inject."
+		
+    - Enviar correctamente peticiones ARP.
+		Realizado: Se realiza la través de la función "ARPResolution", se crea la petición con "createARPRequest" y gracias a "send_ethernet_frame" se devuelve la trama que se envía a través del Ethernet.
+		
+    - Procesar correctamente peticiones ARP recibidas.
+		Realizado: Se ejecuta la función "processARPFrame" y, debido a que en este caso se trata de una petición, se llama a "processARPRequest".
+		
+    - Enviar correctamente respuestas ARP.
+		Realizado: Cuando se verifica que la dirección IP objetivo de la solicitud ARP corresponde a la propia, se procede a elaborar la respuesta utilizando la función denominada "createARPReply".
+		
+    - Procesar correctamente respuestas ARP.
+		Realizado: La función "processARPFrame" examina el formato de la trama ARP e identifica que es una respuesta, por lo que invoca a "processARPReply". Esta última verifica que la dirección MAC recibida coincida con la proporcionada en el nivel Ethernet y que la dirección IP de destino sea la propia. Si se confirma que la dirección IP de origen en la solicitud es la misma que la consultada en ARPResolution, se actualizan las variables globales "awaitingResponse" y "resolvedMAC".
+		
+    - Manejo correcto de la caché ARP.
+		Realizado: Se verifica si la dirección IP solicitada está presente en la caché y, tras una resolución ARP exitosa, se procede a registrarla adecuadamente en la misma.
+		
+    - Uso correcto de Locks.
+		Realizado: Para editar variables globales y caché se usan "globalLock" y "cacheLock" respectivamente, adquiriendo el bloqueo antes de la modificación y liberándolo después. Los bloqueos no se aplican para leer.
+		
+    - Realiza correctamente el sondeo ARP.
+		Realizado: Se utiliza, de nuevo, la función "ARPResolution" y se verifica que se retorna un error si, al inicializar ARP, se detecta otra dirección MAC asociada a la misma dirección IP.

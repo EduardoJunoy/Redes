@@ -1,0 +1,73 @@
+En qué módulo Python implementaremos el reensamblado de datagramas:
+En ninguno
+
+¿Qué valores debe enviar un Echo Reply en la cabecera ICMP?
+Code = 0 Type =0
+
+Teniendo las variables myIP, myMask e IPgateway , ¿ cómo comprobaríamos que una IP destino (IPdest) NO está en mi misma subred?
+(myIP & myMask) != (IPdest& myMask)
+
+Si el offset calculado para un fragmento es 1480 bytes, ¿qué valor debe codificarse en la cabecera del paquete?
+185
+
+¿Cómo se mide el RTT en la práctica 3?
+Es el tiempo que hay entre una solicitud de eco de ICMP y su respuesta.
+
+Se ha recibido un datagrama IP con MF=0 y offset!=0, podemos asegurar:
+Estamos procesando el último fragmento de un datagrama IP
+
+¿Cómo identificamos la recepción de un datagrama IP NO fragmentado?
+MF==0 Offset ==0
+
+Teniendo las variables myIP, myMask e IPgateway , ¿ cómo comprobaríamos que la  IP destino (IPdest) está en mi misma subred?
+(myIP & myMask) == (IPdest& myMask)
+
+¿Sobre qué campos calcularemos el checksum ICMP en la práctica?
+Cabecera ICMP + Datos + 1 byte con el valor 0 --> si lonitud de  ICMP + Datos es impar
+
+¿Qué valor de TTL se tiene que asignar a los datagramas IP de la práctica 3?
+64
+
+Si se envían 4 bytes de opciones en IP, ¿ qué valor debe codificarse en la cabecera del paquete para el campo IHL?
+6
+
+A la hora de probar la práctica, se envía un mensaje  ICMP Echo Request fragmentado desde h1 a h2. ¿Qué se recibe de vuelta en h1?
+Un mensaje ICMP Echo Reply.
+
+¿Qué valores debe enviar un Echo Request en la cabecera ICMP?
+Code = 0 Type =8
+
+A la hora de probar la práctica, se envía un datagrama UDP desde h1 a h2. ¿Qué se recibe de vuelta en h1?
+Un mensaje ICMP de puerto inalcanzable.
+
+
+¿Sobre qué campos calcularemos el checksum UDP en la práctica?
+Cabecera UDP
+
+Tenemos las variables myIP, myMask, IPdest e IPgateway. Si IPdest y myIP NO SE ENCUENTRAN en la misma subred, ¿qué dirección MAC tengo que usar como destino para las tramas que se van a enviar desde el módulo IP y que contienen los datagramas?
+La que se devuelva al llamar a ARPResolution(IPgateway)ç
+
+Tenemos las variables myIP, myMask, IPdest e IPgateway. Si IPdest y myIP SE ENCUENTRAN en la misma subred, ¿qué dirección MAC tengo que usar como destino para las tramas que se van a enviar desde el módulo IP y que contienen los datagramas?
+La que se devuelva al llamar a ARPResolution(IPdest)
+
+Teniendo las variables myIP, myMask e IPgateway , ¿ cómo comprobaríamos que una IP destino (IPdest) ESTÁ en mi misma subred?
+(myIP & myMask) == (IPdest& myMask)
+
+Se tiene un archivo de 100KiByte y se quiere transmitir sobre UDP el contenido usando el programa de la práctica 3:
+Se podrá transmitir si se fragmenta el contenido
+
+Si se envían 12 bytes de opciones en IP, ¿ qué valor debe codificarse en la cabecera del
+paquete para el campo IHL?
+8
+
+Se tiene un archivo de 1KiByte y se quiere transmitir sobre UDP el contenido usando el
+programa de la práctica 3:
+Se podrá transmitir sin problemas
+
+La MTU se fija en 658 bytes. No hay opciones en la cabecera IP. ¿Cuál será el tamaño
+máximo de datos en los fragmentos?
+638
+
+A la hora de probar la práctica, se envía un mensaje ICMP Echo Request fragmentado
+desde h1 a h2. ¿Qué se recibe de vuelta en h1?
+Un mensaje ICMP Echo Reply.
